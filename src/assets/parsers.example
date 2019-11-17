@@ -1,9 +1,0 @@
-val newline: Parser<char,'u>
-
-val spaces: Parser<unit,'u>
-
-val pchar: char -> Parser<char,'u>
-
-val digit: Parser<char,'u> // parses '0'-'9'
-
-val isAnyOf: seq<char> -> (char -> bool)

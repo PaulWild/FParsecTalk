@@ -1,7 +1,0 @@
-let parsed = run sayHello "Wave Goodbye" 
-// string -> ParserResult<string, 'a>
-
-match parsed with
-    | Success(result, _, _)  -> printfn "%s" result
-    | Failure(errorMsg, _, _) -> printfn "%s" errorMsg"
-

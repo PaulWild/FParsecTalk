@@ -1,0 +1,7 @@
+{
+    "azureFunctions.deploySubpath": "HandParserEndpoint/bin/Release/netcoreapp2.2/publish",
+    "azureFunctions.projectLanguage": "F#",
+    "azureFunctions.projectRuntime": "~2",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.preDeployTask": "publish"
+}

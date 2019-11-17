@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HandParserEndpoint", "HandParserEndpoint\HandParserEndpoint.fsproj", "{CFA21BC9-D8F1-40D3-900E-F7A25F647E29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFA21BC9-D8F1-40D3-900E-F7A25F647E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA21BC9-D8F1-40D3-900E-F7A25F647E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA21BC9-D8F1-40D3-900E-F7A25F647E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA21BC9-D8F1-40D3-900E-F7A25F647E29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

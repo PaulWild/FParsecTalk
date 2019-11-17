@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<Html>
+    <Head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+        
+    </Head>
+    <Body>
+    <div class="container" style="display: flex">
+        <div>
+            <div style="padding: 10px">
+                <textarea rows = "30" cols = "60" name="history" id="History">Hand History...</textarea>
+            </div>
+            <div style="padding-left: 10px">
+                <button onclick=Submit()>Process</button>
+            </div>        
+        </div>
+        <div style="padding: 10px; font-size: 50px" id="bestworst">
+        </div>
+    </div>
+    <div style="height: 400px;">
+        <canvas id="myChart" height="400px"></canvas>
+    </div>
+
+    
+<script type="text/javascript">
+    function Submit() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "https://fparsecbackend.azurewebsites.net/api/HandParserEndpoint?code=Uo8XQ3YaH67wRbgve0mU0lc4POfchu1Ab8iM2rVhL6KBhJLuleUTRw=="); 
+    
+
+        xhr.setRequestHeader("Content-Type","application/json");
+        xhr.setRequestHeader("Accept","application/json");
+        xhr.onload = function(event){ 
+            addGraph(JSON.parse(event.target.response)); // raw response
+        }; 
+        // or onerror, onabort
+        var formData =document.getElementById("History").value; 
+        xhr.send(formData);
+    }
+
+    function cumSum(arr) {
+        var new_array = [];
+        arr.reduce(function(a,b,i) { return new_array[i] = a+b; },0);
+        return new_array;
+    }
+
+    function zip(arr1, arr2) {
+        var c = arr1.map(function(e, i) {
+        return [e, arr2[i]];
+        });
+        return c;
+    }
+
+
+    function addGraph(score) {
+
+        document.getElementById("bestworst").innerHTML ="<div><b>Best Hand:</b> $" +score.biggestWin +"</div>" + "<div><b>Worst Hand:</b> $" +score.biggestLoss +"</div>"
+        
+        let xdata = score.stats.map(x => new Date(Date.parse(x.item1)))
+        let ydata = cumSum(score.stats.map(x => x.item2))
+        let data = zip(xdata,ydata).map(function(x) { return {x: x[0], y:x[1]}})
+        var ctx = document.getElementById('myChart');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Total Winnings",
+                    data: data,
+                    backgroundColor: "black",
+                    borderColor: "grey",
+                    fill: false,
+                    lineTension: 0,
+                    radius: 5
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        },
+                        time: {
+                            unit: 'day'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Total Winnings ($)'
+                        }
+                      
+                    }],
+                    
+                }
+            }
+        })
+    }
+</script>
+</Body>
+</Html>

@@ -1,4 +1,0 @@
-type DavidGraySong = | MassiveTune
-
-let hb = sayHello .>>. waveGoodybe |>> fun(_,_) -> MassiveTune
-// string -> ParserResult<DavidGraySong, 'a>

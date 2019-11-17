@@ -1,7 +1,0 @@
-val (>>.): Parser<'a,'u> -> Parser<'b,'u> -> Parser<'b,'u>
-
-val between: Parser<'a,'u> -> Parser<'b,'u> -> Parser<'c,'u> -> Parser<'c,'u>
-
-val (<|>): Parser<'a,'u> -> Parser<'a,'u> -> Parser<'a,'u>
-
-val sepBy: Parser<'a,'u> -> Parser<'b,'u> -> Parser<'a list,'u>

@@ -1,0 +1,11 @@
+let hb = sayHello .>>. waveGoodybe
+let parsed = run sayHello "Say Hello" 
+
+match parsed with
+    | Success(result, _, _)  -> printfn "%s" result
+    | Failure(errorMsg, _, _) -> printfn "%s" errorMsg"
+
+// Error in Ln: 1 Col: 10
+// Say Hello Wave GoodBye
+//         ^
+// Expecting: 'Wave Goodbye'

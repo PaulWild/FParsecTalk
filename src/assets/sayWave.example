@@ -1,4 +1,0 @@
-let hello = pstring "Say Hello" // string -> Parser<string, 'a>
-
-let goodbye = pstring "Wave Goodbye" 
-// string -> Parser<string, 'a>
