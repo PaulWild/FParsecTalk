@@ -350,6 +350,34 @@ chips010: doesn't show hand<br />
         </CodePane>
         </Slide>
 
+        <Slide transition={['spin']} bgColor="tertiary">
+          <Text textColor="secondary" textAlign="left" textSize="26px">
+            <b>
+PokerStars Hand #205003316244 Hold'em No Limit<br />
+2019/10/08 21:34:25 UTC<br />
+*** HOLE CARDS ***<br />
+COMANDOSUR77: posts small blind $0.02<br />
+Nodrik: posts big blind $0.05<br />
+Dealt to xdontxpanicx [3d As]<br />
+chips010: raises $0.12 to $0.17<br />
+TelmernatorX: folds<br />
+xdontxpanicx: calls $0.17<br />
+hardcoremaO: folds<br />
+COMANDOSUR77: folds<br />
+Nodrik: folds<br />
+*** FLOP *** [Qc Js Ah]<br />
+chips010: bets $0.20<br />
+xdontxpanicx: calls $0.20<br />
+*** TURN *** [Qc Js Ah] [9s]<br />
+chips010: bets $0.40<br />
+xdontxpanicx: folds<br />
+Uncalled bet ($0.40) returned to chips010<br />
+chips010 collected $0.78 from pot<br />
+chips010: doesn't show hand<br />
+</b>
+          </Text>
+        </Slide>  
+
         <Slide transition={['slide']} bgColor="secondary" textColor="primary">
         <Heading size={1}>
             Summary
