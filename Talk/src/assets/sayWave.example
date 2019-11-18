@@ -1,4 +1,4 @@
-let hello = pstring "Say Hello" // string -> Parser<string, 'a>
+let sayHello = pstring "Say Hello" // string -> Parser<string, 'a>
 
-let goodbye = pstring "Wave Goodbye" 
+let waveGoodbye = pstring "Wave Goodbye" 
 // string -> Parser<string, 'a>

@@ -15,6 +15,7 @@ import {
   Image,
   CodePane,
   Appear,
+  Notes
 } from 'spectacle';
 
 // Import theme
@@ -59,8 +60,16 @@ export default class Presentation extends React.Component {
             <Quote>Using F# to parse poker hand history</Quote>
             <Cite>Paul Wild</Cite>
           </BlockQuote>
+          <Notes>
+            <h4>Introduce yourself!</h4>
+            <ol>
+              <li>Software Developer .net OO</li>
+              <li>Forgive me: not FP programmer - just like it</li>
+              <li>First talk</li>
+              <li>Excuses out of the way</li>
+            </ol>
+        </Notes>
         </Slide>
-
          <Slide
           transition={['slide']}
           bgImage={images.poker}
@@ -73,6 +82,16 @@ export default class Presentation extends React.Component {
             <Quote textSize="36px" textAlign="left" padding="0px 0px 0px 10px">More rake is better</Quote>
             <Cite textSize="18px">Daniel Negreanu</Cite>
           </BlockQuote>
+          <Notes>
+            <h4>What is Poker?</h4>
+            <ol>
+              <li>Card game</li>
+              <li>2 cards dealt, betting, card in the middle of the table</li>
+              <li>Idea is to make the best hand</li>
+              <li>Hard - Don't know how much you are losing, what starting hands make most money,</li>
+              <li>History of hand is stored locally on machine or emailed</li>
+            </ol>
+        </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary">
@@ -117,6 +136,9 @@ Seat 5: xdontxpanicx folded on the Turn<br />
 Seat 6: hardcoremaO (button) folded before Flop (didn't bet)<br />
 </b>
           </Text>
+          <Notes>
+            <h4>Just Describe the text</h4>
+          </Notes>  
         </Slide>  
         
         <Slide transition={['spin']} bgColor="tertiary">
@@ -149,6 +171,13 @@ chips010: doesn't show hand<br />
             <Quote textSize="36px" textAlign="left" padding="0px 0px 0px 10px">you can't be all loose goosey, eating a sandwich</Quote>
             <Cite textSize="18px" textColor="secondary">Daniel Negreanu</Cite>
           </BlockQuote>
+          <Notes>
+          <h4>Too complicated</h4>
+            <ol>
+              <li>Simplify meta data</li>
+              <li>Going forward, define the domain start -> going</li>
+            </ol>
+            </Notes>
         </Slide>  
 
         <Slide transition={['fade']} bgColor="quaternary" textColor="primary">
@@ -158,6 +187,15 @@ chips010: doesn't show hand<br />
             textSize="15"
             source={ require('!!raw-loader!./assets/domain.example') }>
           </CodePane>
+          <Notes>         
+            <h4>The Domain</h4>
+            <ol>
+              <li>Just use basic F#</li>
+              <li>Unions - or sum type, "this or this or this"</li>
+              <li>Records collection of properties</li>
+            </ol>
+            </Notes>
+
         </Slide>
           <Slide transition={['spin']} bgColor="quaternary" textColor="primary">
           <CodePane 
@@ -166,6 +204,15 @@ chips010: doesn't show hand<br />
             textSize="15"
             source={ require('!!raw-loader!./assets/domain2.example') }>
           </CodePane>
+          <Notes>         
+            <h4>The Domain</h4>
+            <ol>
+              <li>Just use basic F#</li>
+              <li>Unions - or sum type, "this or this or this"</li>
+              <li>Records collection of properties</li>
+            </ol>
+            </Notes>
+
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
@@ -173,11 +220,22 @@ chips010: doesn't show hand<br />
             The Options
           </Heading>
           <List>
-            <ListItem>Some imperitive mess</ListItem>
+            <ListItem>Big ol' nested IF</ListItem>
             <ListItem>Yacc and lexx</ListItem>
             <ListItem>Parser Combinator</ListItem>
             <ListItem>...</ListItem>
           </List>
+          <Notes>
+          A compiler or interptreter for a programminning language is often decomposed into two parts:
+Read the source program and discover its structure.
+Process this structure, e.g. to generate the target program.
+Lex and Yacc can generate program fragments that solve the first task.
+The task of discovering the source structure again is decomposed into subtasks:
+
+Split the source file into tokens (Lex).
+Find the hierarchical structure of the program (Yacc).
+
+          </Notes>
         </Slide>
         <Slide transition={['fade']} bgColor="tertiary" textColor="tertiary">
           <Heading size={2} textColor="secondary" caps>
@@ -186,20 +244,25 @@ chips010: doesn't show hand<br />
           <Text textAlign="left">
           In computer programming, a parser combinator is a higher-order function that accepts several parsers as input and returns a new parser as its output. In this context, a parser is a function accepting strings as input and returning some structure as output, typically a parse tree or a set of indices representing locations in the string where parsing stopped successfully. Parser combinators enable a recursive descent parsing strategy that facilitates modular piecewise construction and testing. This parsing technique is called combinatory parsing. 
           </Text>
+          <Notes>
+          <ol>
+              <li>Hit up Wikipedia</li>
+          In computer programming, a parser combinator is a higher-order function that accepts several parsers as input and returns a new parser as its output. In this context, a parser is a function accepting strings as input and returning some structure as output, typically a parse tree or a set of indices representing locations in the string where parsing stopped successfully. Parser combinators enable a recursive descent parsing strategy that facilitates modular piecewise construction and testing. This parsing technique is called combinatory parsing. 
+
+          <li>Thanks for coming</li>
+            </ol>          
+          </Notes>
         </Slide>
         <Slide transition={['zoom']} bgColor="primary">
           <Image src={images.parser} width="200%">
           </Image>
-          <Appear>
-            <div>
-          <CodePane 
-            lang="fsharp" 
-            theme="external" 
-            textSize="30"
-            source="let myFirstParser s = pstring s // string -> Parser<string, 'a>">
-          </CodePane>
-          </div>
-          </Appear>
+
+          <Notes>
+            <ol>
+              <li>Make it simpler</li>
+              <li>Lets look at a simple parser...</li>
+            </ol>
+            </Notes>
         </Slide>
 
         <Slide transition={['zoom']} bgColor="primary">
@@ -235,6 +298,16 @@ chips010: doesn't show hand<br />
           </CodePane>
           </div>
           </Appear>
+
+          <Notes>
+            <ol>
+              <li>string parser . comes from fparsec, ignore parser state</li>
+              <li>HIT NEXT</li>
+              <li>Run on some input</li>
+              <li>HIT NEXT</li>
+              <li>Output, parser state</li>
+            </ol>
+            </Notes>
         </Slide>
 
         <Slide transition={['zoom']} bgColor="primary">
@@ -264,10 +337,19 @@ chips010: doesn't show hand<br />
             lang="fsharp" 
             theme="external" 
             textSize="35"
-            source={ "let goodbye = pstring \"Wave Goodbye\" // string -> Parser<string, 'a>" }>
+            source={ "let sayGoodbye = pstring \"Wave Goodbye\" // string -> Parser<string, 'a>" }>
           </CodePane>
           </div>
           </Appear>
+          <Notes>
+          <ol>
+              <li>Look when you run it on some text that it isn't expecting. match out the success error</li>
+              <li>HIT NEXT</li>
+              <li>Get an error output describing where it went wrong</li>
+              <li>HIT NEXT</li>
+              <li>We could define a parser to work in this situation</li>
+            </ol>
+            </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary" textColor="tertiary">
@@ -281,7 +363,12 @@ chips010: doesn't show hand<br />
             textSize="36"
             source={ require('!!raw-loader!./assets/sayWave.example')}>
           </CodePane>
-
+          <Notes>
+          <ol>
+              <li>What happens if we have the text say hello wave goodbye?</li>
+              <li>Slowly winding our way to combinators</li>
+            </ol>
+            </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary" textColor="tertiary">
@@ -299,6 +386,16 @@ chips010: doesn't show hand<br />
             </CodePane>
             </div>
           </Appear>
+          <Notes>
+          <ol>
+              <li>Welcome to fparsecs exoteric syntax</li>
+              <li>the 'and then' function</li>
+              <li>HIT NEXT</li>
+              <li>Describe the tuple output</li>
+              <li>DONT HIT NEXT</li>
+              <li>tuple of string strin is pretty useless, because what you have here</li>
+            </ol>
+            </Notes>
         </Slide>
 
         <Slide transition={['fade']} bgColor="tertiary" textColor="tertiary">
@@ -309,7 +406,15 @@ chips010: doesn't show hand<br />
             textSize="36"
             source={ require('!!raw-loader!./assets/tune.example')}>
           </CodePane>
-
+          <Notes>
+          <ol>
+              <li>A david gray massive tune</li>
+              <li>Lets return that instead!</li>
+              <li>monadic ? </li>
+              <li>first parser and combinator, everythings great</li>
+ 
+            </ol>
+            </Notes>
         </Slide>
         <Slide transition={['fade']} bgColor="tertiary" textColor="tertiary">
           <Heading size={3} textColor="secondary" caps>
@@ -394,7 +499,7 @@ chips010: doesn't show hand<br />
       Thanks!
     </Heading>
     <List>
-    <ListItem>Slides and code: www.github.com/paulwild</ListItem>
+    <ListItem>Slides and code: https://github.com/PaulWild/FParsecTalk</ListItem>
     <ListItem>Me on Twitter: @pw_x</ListItem>
     <ListItem>https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/</ListItem>
     <ListItem>{"https://www.youtube.com/watch?v=RDalzi7mhdY&t=2211s"}</ListItem>

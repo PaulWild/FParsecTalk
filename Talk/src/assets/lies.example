@@ -1,5 +1,5 @@
-let hb = sayHello .>>. waveGoodybe
-let parsed = run sayHello "Say Hello" 
+let hb = sayHello .>>. waveGoodbye
+let parsed = run hb "Say Hello Wave Goodbye" 
 
 match parsed with
     | Success(result, _, _)  -> printfn "%s" result
